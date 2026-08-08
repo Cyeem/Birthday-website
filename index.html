@@ -1,253 +1,1940 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Love, Emily ❤️</title>
 
-    <title>Happy Birthday, My Love ❤️</title>
+<style>
 
-    <link rel="stylesheet" href="style.css">
+/* ==================================================
+   BASE
+================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: #fff5f8;
+    color: #542333;
+    overflow-x: hidden;
+}
+
+button {
+    font-family: inherit;
+}
+
+
+/* ==================================================
+   OPENING
+================================================== */
+
+.hero {
+    min-height: 100svh;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 25px 20px;
+
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at 20% 20%, #ffd5e3, transparent 35%),
+        radial-gradient(circle at 80% 80%, #f8d9e7, transparent 35%),
+        #fff6f9;
+}
+
+.hero h1 {
+    font-size: clamp(45px, 9vw, 90px);
+    line-height: 1;
+    color: #a7194b;
+    margin: 15px 0;
+}
+
+.hero h1 span {
+    display: block;
+}
+
+.hero-subtitle {
+    max-width: 650px;
+    font-size: 18px;
+    line-height: 1.7;
+    margin: 15px auto 25px;
+}
+
+.hero-heart {
+    font-size: 55px;
+    animation: heartbeat 1.4s infinite;
+}
+
+
+/* ==================================================
+   BIG TEDDY
+================================================== */
+
+.big-teddy {
+    position: relative;
+
+    font-size: clamp(120px, 25vw, 230px);
+
+    line-height: 1;
+
+    animation:
+        teddyEntrance 1.5s ease,
+        teddyFloat 3s ease-in-out infinite 1.5s;
+
+    filter:
+        drop-shadow(0 18px 15px rgba(80,20,40,.18));
+
+    z-index: 5;
+}
+
+.teddy-heart {
+    position: absolute;
+
+    font-size: 35px;
+
+    top: 8%;
+    right: 5%;
+
+    animation:
+        heartPulse 1.2s infinite;
+}
+
+@keyframes teddyEntrance {
+
+    0% {
+        transform:
+            translateX(-120vw)
+            rotate(-20deg)
+            scale(.5);
+
+        opacity: 0;
+    }
+
+    70% {
+        transform:
+            translateX(20px)
+            rotate(5deg)
+            scale(1.05);
+
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateX(0)
+            rotate(0)
+            scale(1);
+    }
+}
+
+@keyframes teddyFloat {
+
+    0%, 100% {
+        transform: translateY(0) rotate(-3deg);
+    }
+
+    50% {
+        transform: translateY(-18px) rotate(3deg);
+    }
+}
+
+@keyframes heartPulse {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.35);
+    }
+}
+
+
+/* ==================================================
+   BUTTONS
+================================================== */
+
+.main-button,
+.next-button,
+.yes-button {
+
+    border: none;
+
+    background:
+        linear-gradient(
+            135deg,
+            #c2185b,
+            #e34d82
+        );
+
+    color: white;
+
+    padding: 15px 30px;
+
+    border-radius: 40px;
+
+    font-size: 17px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 30px rgba(194,24,91,.25);
+
+    transition: .3s;
+}
+
+.main-button:hover,
+.next-button:hover,
+.yes-button:hover {
+    transform: translateY(-4px) scale(1.03);
+}
+
+.main-button {
+    margin-top: 15px;
+}
+
+
+/* ==================================================
+   SURPRISE
+================================================== */
+
+#surprise {
+    display: none;
+}
+
+#surprise.open {
+    display: block;
+}
+
+
+/* ==================================================
+   PAGES
+================================================== */
+
+.page {
+
+    display: none;
+
+    min-height: 100svh;
+
+    width: 100%;
+
+    padding: 55px 20px;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.page.active {
+    display: flex;
+
+    animation:
+        pageEnter .8s ease;
+}
+
+@keyframes pageEnter {
+
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.page-number {
+
+    background: #d98ba7;
+
+    color: white;
+
+    padding: 7px 15px;
+
+    border-radius: 30px;
+
+    font-size: 13px;
+
+    margin-bottom: 15px;
+}
+
+.page h2 {
+
+    font-size:
+        clamp(34px, 7vw, 60px);
+
+    color: #a7194b;
+
+    margin: 10px 0 25px;
+}
+
+.page p {
+
+    max-width: 750px;
+
+    font-size: 19px;
+
+    line-height: 1.8;
+
+    margin: 12px auto;
+}
+
+.next-button {
+    margin-top: 30px;
+}
+
+
+/* ==================================================
+   MOVING TEDDY BETWEEN PAGES
+================================================== */
+
+.page-teddy {
+
+    position: absolute;
+
+    bottom: 15px;
+
+    font-size: 70px;
+
+    animation:
+        teddyWalk 5s linear infinite;
+
+    z-index: 2;
+
+    pointer-events: none;
+}
+
+@keyframes teddyWalk {
+
+    0% {
+        left: -100px;
+        transform: scaleX(1);
+    }
+
+    48% {
+        left: calc(100% - 80px);
+        transform: scaleX(1);
+    }
+
+    50% {
+        transform: scaleX(-1);
+    }
+
+    98% {
+        left: -20px;
+        transform: scaleX(-1);
+    }
+
+    100% {
+        left: -100px;
+        transform: scaleX(1);
+    }
+}
+
+
+/* ==================================================
+   MESSAGE CARDS
+================================================== */
+
+.love-card {
+
+    width: min(750px, 100%);
+
+    background: rgba(255,255,255,.8);
+
+    padding: 35px 25px;
+
+    border-radius: 30px;
+
+    box-shadow:
+        0 20px 50px rgba(80,20,40,.1);
+
+    backdrop-filter: blur(8px);
+
+    animation:
+        cardFloat 3s ease-in-out infinite;
+}
+
+@keyframes cardFloat {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+
+/* ==================================================
+   PHOTOS
+================================================== */
+
+.gallery {
+
+    width: min(950px, 100%);
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+
+    margin: 15px auto;
+}
+
+.photo {
+
+    background: white;
+
+    padding: 8px;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 15px 35px rgba(80,20,40,.12);
+
+    transition:
+        transform .4s ease;
+
+    animation:
+        photoAppear .8s ease backwards;
+}
+
+.photo:nth-child(1) {
+    animation-delay: .1s;
+}
+
+.photo:nth-child(2) {
+    animation-delay: .2s;
+}
+
+.photo:nth-child(3) {
+    animation-delay: .3s;
+}
+
+.photo:nth-child(4) {
+    animation-delay: .4s;
+}
+
+.photo:nth-child(5) {
+    animation-delay: .5s;
+}
+
+.photo:nth-child(6) {
+    animation-delay: .6s;
+}
+
+.photo:hover {
+    transform:
+        translateY(-8px)
+        rotate(2deg)
+        scale(1.03);
+}
+
+.photo img {
+
+    width: 100%;
+
+    height: 250px;
+
+    object-fit: cover;
+
+    border-radius: 14px;
+
+    display: block;
+}
+
+@keyframes photoAppear {
+
+    from {
+        opacity: 0;
+        transform:
+            scale(.7)
+            rotate(-5deg);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            scale(1)
+            rotate(0);
+    }
+}
+
+
+/* ==================================================
+   FUTURE SECTION
+================================================== */
+
+.future {
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff0f5,
+            #f8e5ed
+        );
+}
+
+.future-heart {
+
+    font-size: 70px;
+
+    animation:
+        heartbeat 1.5s infinite;
+}
+
+
+/* ==================================================
+   QUESTION
+================================================== */
+
+.question-box {
+
+    width: min(750px, 100%);
+
+    padding: 40px 25px;
+
+    background:
+        rgba(255,255,255,.85);
+
+    border-radius: 35px;
+
+    box-shadow:
+        0 20px 60px rgba(80,20,40,.12);
+}
+
+.question {
+
+    font-size:
+        clamp(25px, 6vw, 42px) !important;
+
+    font-weight: bold;
+
+    color: #951644;
+}
+
+.question-buttons {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 25px;
+
+    min-height: 100px;
+
+    margin-top: 25px;
+}
+
+.no-button {
+
+    border: none;
+
+    background: #eeeeee;
+
+    color: #555;
+
+    padding: 15px 28px;
+
+    border-radius: 40px;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    touch-action: none;
+
+    user-select: none;
+
+    z-index: 99999;
+
+    transition:
+        left .18s ease,
+        top .18s ease,
+        transform .18s ease;
+}
+
+#answer {
+
+    min-height: 35px;
+
+    color: #b51f52;
+
+    font-size: 19px;
+
+    font-weight: bold;
+
+    margin-top: 25px;
+}
+
+
+/* ==================================================
+   FUNNY NO BUTTON
+================================================== */
+
+.no-running {
+
+    animation:
+        noShake .3s ease;
+}
+
+@keyframes noShake {
+
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+
+    25% {
+        transform: rotate(-15deg) scale(1.1);
+    }
+
+    50% {
+        transform: rotate(15deg) scale(.9);
+    }
+
+    75% {
+        transform: rotate(-8deg) scale(1.08);
+    }
+
+    100% {
+        transform: rotate(0deg) scale(1);
+    }
+}
+
+.no-bubble {
+
+    position: fixed;
+
+    z-index: 100000;
+
+    background: white;
+
+    color: #a7194b;
+
+    padding: 10px 16px;
+
+    border-radius: 20px;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.15);
+
+    pointer-events: none;
+
+    animation:
+        bubblePop 1.2s ease forwards;
+}
+
+@keyframes bubblePop {
+
+    0% {
+        opacity: 0;
+        transform: scale(.3);
+    }
+
+    25% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            translateY(-35px)
+            scale(.8);
+    }
+}
+
+
+/* ==================================================
+   YES CELEBRATION
+================================================== */
+
+.celebration {
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,225,237,.98),
+            rgba(255,245,248,.98)
+        );
+
+    z-index: 200000;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    animation:
+        celebrationAppear .5s ease;
+}
+
+.celebration-content {
+
+    padding: 30px;
+
+    animation:
+        celebrationPop .9s
+        cubic-bezier(.17,.67,.32,1.5);
+}
+
+.celebration-teddy {
+
+    font-size: 110px;
+
+    animation:
+        celebrationTeddy 1s infinite;
+}
+
+.celebration h1 {
+
+    font-size:
+        clamp(38px, 9vw, 75px);
+
+    color: #b51f52;
+
+    line-height: 1.05;
+
+    margin: 15px 0;
+}
+
+.celebration p {
+
+    font-size: 22px;
+
+    color: #612338;
+}
+
+@keyframes celebrationAppear {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes celebrationPop {
+
+    0% {
+        transform: scale(.2);
+        opacity: 0;
+    }
+
+    70% {
+        transform: scale(1.12);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes celebrationTeddy {
+
+    0%,100% {
+        transform:
+            translateY(0)
+            rotate(-5deg);
+    }
+
+    50% {
+        transform:
+            translateY(-20px)
+            rotate(5deg);
+    }
+}
+
+
+/* ==================================================
+   FLOATING HEARTS
+================================================== */
+
+.floating {
+
+    position: fixed;
+
+    bottom: -50px;
+
+    pointer-events: none;
+
+    z-index: 300000;
+
+    animation:
+        floatUp 4s linear forwards;
+}
+
+@keyframes floatUp {
+
+    from {
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity: 1;
+    }
+
+    to {
+        transform:
+            translateY(-115vh)
+            rotate(720deg);
+
+        opacity: 0;
+    }
+}
+
+
+/* ==================================================
+   FINAL PAGE
+================================================== */
+
+.final-page {
+
+    background:
+        radial-gradient(
+            circle at center,
+            #ffe1eb,
+            #fff5f8
+        );
+}
+
+.final-heart {
+
+    font-size: 85px;
+
+    animation:
+        heartbeat 1.3s infinite;
+}
+
+.final-page h2 {
+
+    color: #a7194b;
+}
+
+
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media (max-width: 700px) {
+
+    .gallery {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 12px;
+    }
+
+    .photo img {
+        height: 180px;
+    }
+
+    .page {
+        padding:
+            45px 16px;
+    }
+
+    .page p {
+        font-size: 17px;
+    }
+
+    .page-teddy {
+        font-size: 55px;
+    }
+
+    .question-buttons {
+        gap: 15px;
+    }
+
+    .big-teddy {
+        font-size: 125px;
+    }
+
+    .celebration-teddy {
+        font-size: 85px;
+    }
+
+}
+
+</style>
 </head>
 
 <body>
 
-    <section class="hero">
 
-        <div class="hearts">❤️</div>
+<!-- ==================================================
+     OPENING SCREEN
+================================================== -->
 
-        <p class="small-text">A special message for someone special</p>
+<section class="hero" id="hero">
 
-        <<h1>Happy Birthday,<br>Emily ❤️</h1>
+    <div class="big-teddy">
 
-        <p class="subtitle">
-    To the woman I love, my best friend, and my future wife.
-    Today is all about celebrating you. ❤️
-</p>
+        🧸
 
-        
-        <button id="openSurprise">Open Your Surprise 🎁</button>
-        
+        <span class="teddy-heart">
+            ❤️
+        </span>
+
+    </div>
+
+    <div class="hero-heart">
+        💕
+    </div>
+
+    <p>
+        A little surprise for the woman
+        who has my heart...
+    </p>
+
+    <h1>
+        For My Love,
+        <span>Emily ❤️</span>
+    </h1>
+
+    <p class="hero-subtitle">
+        I made something special for you.
+        Take a little journey through our memories,
+        our story, and everything I feel for you. 🥹❤️
+    </p>
+
+    <button
+        class="main-button"
+        id="openButton">
+
+        Open Your Surprise 🎁
+
+    </button>
+
+</section>
+
+
+<!-- ==================================================
+     SURPRISE
+================================================== -->
+
+<div id="surprise">
+
+
+    <!-- ==========================
+         PAGE 1
+    =========================== -->
+
+    <section class="page active">
+
+        <div class="page-number">
+            01
+        </div>
+
+        <div class="love-card">
+
+            <h2>
+                For You, My Love 💌
+            </h2>
+
+            <p>
+                Emily, happy birthday to the person
+                who has become such a beautiful part
+                of my life. ❤️
+            </p>
+
+            <p>
+                I hope today reminds you just how
+                special, loved, appreciated and
+                beautiful you are.
+            </p>
+
+            <p>
+                Thank you for every laugh,
+                every conversation, every memory,
+                and every little moment we've shared.
+            </p>
+
+        </div>
+
+        <div class="page-teddy">
+            🧸
+        </div>
+
+        <button class="next-button">
+            Keep Going ❤️
+        </button>
 
     </section>
 
 
-    <div id="surpriseContent" class="hidden">
+    <!-- ==========================
+         PAGE 2 — PHOTOS
+    =========================== -->
 
-<section id="message" class="message-section">
+    <section class="page">
 
-    <div class="message-content">
-
-        <h2>For You, My Love ❤️</h2>
-
-        <p>
-            Happy Birthday to the most beautiful person in my life. ❤️
-        </p>
-
-        <p>
-            I just want you to know how much you mean to me.
-            You bring happiness, peace, laughter and so many beautiful
-            moments into my life.
-        </p>
-
-        <p>
-            I'm grateful for every memory we've created together,
-            and I'm excited for all the moments still waiting for us.
-        </p>
-
-        <p>
-            On your birthday, I wish you happiness that never ends,
-            success in everything you do, peace in your heart,
-            and the courage to chase every dream you have.
-        </p>
-
-        <p>
-            I hope we continue creating beautiful memories together,
-            growing together, laughing together, and eventually looking
-            back at all of this as the beginning of our forever.
-        </p>
-
-        <p class="love">
-            I love you, Emily. ❤️
-        </p>
-
-    </div>
-
-</section>
-
-<section class="story">
-
-    <h2>Our Story ❤️</h2>
-
-    <p class="story-intro">
-        Every love story is special, but I’m grateful that ours is mine.
-    </p>
-
-    <div class="timeline">
-
-        <div class="story-card">
-            <span>01</span>
-            <h3>The Beginning 🌹</h3>
-            <p>
-                Somewhere along the way, you came into my life
-                and became someone incredibly special to me.
-            </p>
+        <div class="page-number">
+            02
         </div>
 
-        <div class="story-card">
-            <span>02</span>
-            <h3>Our Memories ✨</h3>
-            <p>
-                From the little conversations to the moments
-                that made us laugh, every memory with you means
-                more to me than you know.
-            </p>
-        </div>
+        <h2>
+            Our Beautiful Memories 📸
+        </h2>
 
-        <div class="story-card">
-            <span>03</span>
-            <h3>Today ❤️</h3>
-            <p>
-                Today, I get to celebrate you — the beautiful woman
-                who has a special place in my heart.
-            </p>
-        </div>
+        <p>
+            Every picture holds a little piece
+            of our story. ❤️
+        </p>
 
-        <div class="story-card">
-            <span>04</span>
-            <h3>Our Future 💍</h3>
-            <p>
-                And someday, I hope we look back at this birthday
-                as another beautiful chapter in the story of
-                Calvin and Emily.
-            </p>
-        </div>
+        <div class="gallery">
 
-    </div>
-
-</section>
-    <section class="wishes">
-
-        <h2>A Little Something For You ✨</h2>
-
-        <div class="cards">
-
-            <div class="card">
-                <div class="icon">❤️</div>
-                <h3>My Favorite Person</h3>
-                <p>
-                    You have a special place in my heart
-                    that nobody else can replace.
-                </p>
+            <div class="photo">
+                <img src="photo1.jpg" alt="Emily">
             </div>
 
-            <div class="card">
-                <div class="icon">🌹</div>
-                <h3>My Wish For You</h3>
-                <p>
-                    May this new chapter bring you happiness,
-                    success and beautiful memories.
-                </p>
+            <div class="photo">
+                <img src="photo2.jpg" alt="Emily">
             </div>
 
-            <div class="card">
-                <div class="icon">✨</div>
-                <h3>Forever Grateful</h3>
-                <p>
-                    I'm grateful that life brought
-                    you into mine.
-                </p>
+            <div class="photo">
+                <img src="photo3.jpg" alt="Emily">
             </div>
+
+            <div class="photo">
+                <img src="photo4.jpg" alt="Emily">
+            </div>
+
+            <div class="photo">
+                <img src="photo5.jpg" alt="Emily">
+            </div>
+
+            <div class="photo">
+                <img src="photo6.jpg" alt="Emily">
+            </div>
+
+        </div>
+
+        <div class="page-teddy">
+            🧸
+        </div>
+
+        <button class="next-button">
+            There's More ❤️
+        </button>
+
+    </section>
+
+
+    <!-- ==========================
+         PAGE 3
+    =========================== -->
+
+    <section class="page">
+
+        <div class="page-number">
+            03
+        </div>
+
+        <div class="love-card">
+
+            <h2>
+                A Little Something For You 🌹
+            </h2>
+
+            <p>
+                If I could give you one thing today,
+                I'd give you the ability to see yourself
+                through my eyes.
+            </p>
+
+            <p>
+                Then you'd understand why your smile
+                means so much to me.
+            </p>
+
+            <p>
+                You'd understand why even the smallest
+                moments with you can become some of
+                my favorite memories.
+            </p>
+
+            <p>
+                And you'd understand just how much
+                I appreciate having you in my life. ❤️
+            </p>
+
+        </div>
+
+        <div class="page-teddy">
+            🧸
+        </div>
+
+        <button class="next-button">
+            One More Thing... 👀
+        </button>
+
+    </section>
+
+
+    <!-- ==========================
+         PAGE 4 — FUTURE
+    =========================== -->
+
+    <section class="page future">
+
+        <div class="page-number">
+            04
+        </div>
+
+        <div class="future-heart">
+            💕
+        </div>
+
+        <h2>
+            Our Future ❤️
+        </h2>
+
+        <div class="love-card">
+
+            <p>
+                I don't know everything that the future
+                has planned for us...
+            </p>
+
+            <p>
+                But one thing I know is that I want
+                to keep making beautiful memories
+                with you.
+            </p>
+
+            <p>
+                More laughs. 😂
+                More adventures. 🌎
+                More random conversations. 💕
+                More moments that become memories.
+            </p>
+
+            <p>
+                And hopefully...
+                a whole lot more of us. ❤️
+            </p>
+
+        </div>
+
+        <div class="page-teddy">
+            🧸
+        </div>
+
+        <button class="next-button">
+            One Last Question... 👀
+        </button>
+
+    </section>
+
+
+    <!-- ==========================
+         PAGE 5 — QUESTION
+    =========================== -->
+
+    <section class="page">
+
+        <div class="page-number">
+            05
+        </div>
+
+        <div class="question-box">
+
+            <div style="font-size:55px;">
+                💍
+            </div>
+
+            <h2>
+                One Last Question...
+            </h2>
+
+            <p class="question">
+                Emily, will you keep choosing me
+                and let me keep loving you? 🥹❤️
+            </p>
+
+            <div class="question-buttons">
+
+                <button
+                    class="yes-button"
+                    id="yesButton">
+
+                    YES ❤️
+
+                </button>
+
+                <button
+                    class="no-button"
+                    id="noButton">
+
+                    NO 😂
+
+                </button>
+
+            </div>
+
+            <p id="answer"></p>
 
         </div>
 
     </section>
 
-<section class="memories">
 
-    <h2>Our Beautiful Memories 📸</h2>
+    <!-- ==========================
+         PAGE 6 — FINAL
+    =========================== -->
 
-    <p class="memory-text">
-        Some moments become memories,
-        but the memories I have with you will always be special to me. ❤️
-    </p>
+    <section class="page final-page">
 
-    <div class="gallery">
-
-        <div class="photo">
-            <img src="photo1.jpg" alt="Calvin and Emily">
+        <div class="page-number">
+            06
         </div>
 
-        <div class="photo">
-            <img src="photo2.jpg" alt="Calvin and Emily">
+        <div class="final-heart">
+            ❤️
         </div>
 
-        <div class="photo">
-            <img src="photo3.jpg" alt="Calvin and Emily">
-        </div>
+        <h2>
+            Happy Birthday, My Love 🎂❤️
+        </h2>
 
-    </div>
-
-</section>
-    <section class="final">
-
-        <h2>Before You Go... ❤️</h2>
-
-        <div class="letter">
+        <div class="love-card">
 
             <p>
-                I hope you always remember that you are loved,
-                appreciated and cherished.
+                Emily, I hope this little surprise
+                made you smile.
             </p>
 
-        <p>
-            I just want you to know how much you mean to me.
-            You bring happiness, peace, laughter and so many beautiful
-            moments i</h3>
             <p>
-                Today, I get to celebrate you — the beautiful woman
-                who has a special place in my heart.
+                I may not always have the perfect words,
+                but I hope you always know that
+                you are deeply appreciated and loved.
             </p>
+
+            <p>
+                Here's to you, to us, to our memories,
+                and to everything beautiful still ahead. ❤️
+            </p>
+
+            <p>
+                Happy Birthday, my love. 🥹❤️
+            </p>
+
+            <p style="font-size:26px;">
+                Forever yours. ❤️
+            </p>
+
         </div>
 
-        
+        <div style="font-size:40px; margin-top:25px;">
+            🧸💕✨
+        </div>
 
-    </div>
-
-</section>
-
-
-<section class="marriage-game">
-
-    <h2>One Last Question... 💍❤️</h2>
-
-    <p class="question">
-        Emily, will you marry me? 🥹❤️
-    </p>
-
-    <div class="marriage-buttons">
-
-        <button id="yesBtn" onclick="sayYes()">
-            YES! 💍❤️
-        </button>
-
-        <button id="noBtn">
-            NO 😭
-        </button>
-
-    </div>
-
-    <p id="answer"></p>
-
-</section>
+    </section>
 
 
-    <footer>
-    <p>Made with ❤️ for Emily</p>
-    <p class="signature">— Calvin❤️</p>
-</footer>
+</div>
 
 
-    <script src="script.js"></script>
+<script>
+
+/* ==================================================
+   VARIABLES
+================================================== */
+
+const openButton =
+    document.getElementById("openButton");
+
+const surprise =
+    document.getElementById("surprise");
+
+const pages =
+    document.querySelectorAll(".page");
+
+const yesButton =
+    document.getElementById("yesButton");
+
+const noButton =
+    document.getElementById("noButton");
+
+const answer =
+    document.getElementById("answer");
+
+let currentPage = 0;
+
+let noAttempts = 0;
+
+
+/* ==================================================
+   OPEN SURPRISE
+================================================== */
+
+openButton.addEventListener("click", function () {
+
+    document.getElementById("hero").style.display =
+        "none";
+
+    surprise.classList.add("open");
+
+    currentPage = 0;
+
+    showPage(0);
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+});
+
+
+/* ==================================================
+   PAGE NAVIGATION
+================================================== */
+
+function showPage(number) {
+
+    pages.forEach(function(page, index) {
+
+        if (index === number) {
+
+            page.classList.add("active");
+
+        } else {
+
+            page.classList.remove("active");
+
+        }
+
+    });
+
+    currentPage = number;
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* ==================================================
+   NEXT BUTTONS
+================================================== */
+
+const nextButtons =
+    document.querySelectorAll(".next-button");
+
+nextButtons.forEach(function(button) {
+
+    button.addEventListener("click", function() {
+
+        if (currentPage <
+            pages.length - 1) {
+
+            showPage(
+                currentPage + 1
+            );
+
+        }
+
+    });
+
+});
+
+
+/* ==================================================
+   FUNNY NO BUTTON
+================================================== */
+
+const noMessages = [
+
+    "Ehhh not so fast 😂",
+
+    "NOpe! 🏃‍♂️💨",
+
+    "Nice try 😭",
+
+    "You can't catch me 😂",
+
+    "Emily pleaseee 🥹❤️",
+
+    "Why are you chasing me? 😭",
+
+    "I'm allergic to NO 😂",
+
+    "YES is looking better 👉❤️",
+
+    "Okay okay... just say YES 😂❤️"
+
+];
+
+
+function moveNoButton(event) {
+
+    if (event) {
+        event.preventDefault();
+    }
+
+    noAttempts++;
+
+    const message =
+        noMessages[
+            Math.min(
+                noAttempts - 1,
+                noMessages.length - 1
+            )
+        ];
+
+
+    /* Funny bubble */
+
+    const bubble =
+        document.createElement("div");
+
+    bubble.className =
+        "no-bubble";
+
+    bubble.textContent =
+        message;
+
+    bubble.style.left =
+        Math.random() * 60 + 20 + "vw";
+
+    bubble.style.top =
+        Math.random() * 50 + 20 + "vh";
+
+    document.body.appendChild(
+        bubble
+    );
+
+
+    /* Shake */
+
+    noButton.classList.remove(
+        "no-running"
+    );
+
+    void noButton.offsetWidth;
+
+    noButton.classList.add(
+        "no-running"
+    );
+
+
+    /* Move */
+
+    const padding = 20;
+
+    const maxX =
+        window.innerWidth -
+        noButton.offsetWidth -
+        padding;
+
+    const maxY =
+        window.innerHeight -
+        noButton.offsetHeight -
+        padding;
+
+    const x =
+        padding +
+        Math.random() *
+        Math.max(
+            1,
+            maxX - padding
+        );
+
+    const y =
+        padding +
+        Math.random() *
+        Math.max(
+            1,
+            maxY - padding
+        );
+
+
+    noButton.style.position =
+        "fixed";
+
+    noButton.style.left =
+        x + "px";
+
+    noButton.style.top =
+        y + "px";
+
+    noButton.style.zIndex =
+        "999999";
+
+
+    const rotation =
+        Math.random() * 30 - 15;
+
+    noButton.style.transform =
+        `rotate(${rotation}deg) scale(1.08)`;
+
+
+    setTimeout(function() {
+
+        bubble.remove();
+
+    }, 1200);
+
+}
+
+
+/* Laptop */
+
+noButton.addEventListener(
+    "mouseenter",
+    moveNoButton
+);
+
+
+/* Phone */
+
+noButton.addEventListener(
+    "touchstart",
+    moveNoButton,
+    {
+        passive: false
+    }
+);
+
+
+/* Extra touch/click */
+
+noButton.addEventListener(
+    "click",
+    moveNoButton
+);
+
+
+/* ==================================================
+   YES BUTTON
+================================================== */
+
+yesButton.addEventListener(
+    "click",
+    function() {
+
+        answer.innerHTML =
+            "I KNEW IT! 😭❤️🎉<br>" +
+            "My heart is officially celebrating. 🥹💕";
+
+
+        /* Play applause */
+
+        playApplause();
+
+
+        /* Hearts */
+
+        createHearts();
+
+
+        /* Celebration */
+
+        showCelebration();
+
+
+        /* Go to final page */
+
+        setTimeout(function() {
+
+            showPage(5);
+
+        }, 4200);
+
+    }
+);
+
+
+/* ==================================================
+   CELEBRATION
+================================================== */
+
+function showCelebration() {
+
+    const celebration =
+        document.createElement("div");
+
+    celebration.className =
+        "celebration";
+
+    celebration.innerHTML = `
+
+        <div class="celebration-content">
+
+            <div class="celebration-teddy">
+                🧸
+            </div>
+
+            <h1>
+                SHE SAID YES! 😭❤️
+            </h1>
+
+            <p>
+                Happy tears officially activated. 😂💕
+            </p>
+
+            <div style="font-size:35px;">
+                🎉 👏 ❤️ 👏 🎉
+            </div>
+
+        </div>
+
+    `;
+
+    document.body.appendChild(
+        celebration
+    );
+
+
+    /* More hearts */
+
+    for (
+        let i = 0;
+        i < 45;
+        i++
+    ) {
+
+        setTimeout(
+            createHeart,
+            i * 70
+        );
+
+    }
+
+
+    setTimeout(function() {
+
+        celebration.remove();
+
+    }, 4000);
+
+}
+
+
+/* ==================================================
+   HEARTS
+================================================== */
+
+function createHeart() {
+
+    const heart =
+        document.createElement("div");
+
+    heart.className =
+        "floating";
+
+    const symbols = [
+        "❤️",
+        "💕",
+        "💖",
+        "💗",
+        "✨",
+        "🎉"
+    ];
+
+    heart.textContent =
+        symbols[
+            Math.floor(
+                Math.random() *
+                symbols.length
+            )
+        ];
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+    heart.style.fontSize =
+        (18 + Math.random() * 30) + "px";
+
+    heart.style.animationDuration =
+        (3 + Math.random() * 3) + "s";
+
+    document.body.appendChild(
+        heart
+    );
+
+
+    setTimeout(function() {
+
+        heart.remove();
+
+    }, 6500);
+
+}
+
+
+function createHearts() {
+
+    for (
+        let i = 0;
+        i < 35;
+        i++
+    ) {
+
+        setTimeout(
+            createHeart,
+            i * 80
+        );
+
+    }
+
+}
+
+
+/* ==================================================
+   REAL BROWSER APPLAUSE
+================================================== */
+
+function playApplause() {
+
+    const AudioContext =
+        window.AudioContext ||
+        window.webkitAudioContext;
+
+    if (!AudioContext) {
+        return;
+    }
+
+    const ctx =
+        new AudioContext();
+
+    if (ctx.state === "suspended") {
+        ctx.resume();
+    }
+
+    const master =
+        ctx.createGain();
+
+    master.gain.value =
+        0.5;
+
+    master.connect(
+        ctx.destination
+    );
+
+
+    function clap(delay) {
+
+        const bufferSize =
+            ctx.sampleRate * 0.12;
+
+        const buffer =
+            ctx.createBuffer(
+                1,
+                bufferSize,
+                ctx.sampleRate
+            );
+
+        const data =
+            buffer.getChannelData(0);
+
+
+        for (
+            let i = 0;
+            i < bufferSize;
+            i++
+        ) {
+
+            const fade =
+                Math.exp(
+                    -i /
+                    (ctx.sampleRate * .025)
+                );
+
+            data[i] =
+                (Math.random() * 2 - 1)
+                * fade;
+
+        }
+
+
+        const source =
+            ctx.createBufferSource();
+
+        const filter =
+            ctx.createBiquadFilter();
+
+        const gain =
+            ctx.createGain();
+
+
+        source.buffer =
+            buffer;
+
+        filter.type =
+            "highpass";
+
+        filter.frequency.value =
+            900;
+
+
+        gain.gain.setValueAtTime(
+            0.001,
+            ctx.currentTime + delay
+        );
+
+        gain.gain.exponentialRampToValueAtTime(
+            .9,
+            ctx.currentTime +
+            delay +
+            .005
+        );
+
+        gain.gain.exponentialRampToValueAtTime(
+            .001,
+            ctx.currentTime +
+            delay +
+            .11
+        );
+
+
+        source.connect(filter);
+
+        filter.connect(gain);
+
+        gain.connect(master);
+
+
+        source.start(
+            ctx.currentTime + delay
+        );
+
+        source.stop(
+            ctx.currentTime +
+            delay +
+            .13
+        );
+
+    }
+
+
+    /* Big applause */
+
+    for (
+        let i = 0;
+        i < 15;
+        i++
+    ) {
+
+        clap(i * .11);
+
+    }
+
+
+    for (
+        let i = 0;
+        i < 16;
+        i++
+    ) {
+
+        clap(
+            1.5 +
+            i * .09
+        );
+
+    }
+
+
+    for (
+        let i = 0;
+        i < 10;
+        i++
+    ) {
+
+        clap(
+            2.9 +
+            i * .08
+        );
+
+    }
+
+
+    setTimeout(function() {
+
+        ctx.close();
+
+    }, 4500);
+
+}
+
+</script>
 
 </body>
 </html>
+
+<!-- PLAYFUL ANIMALS -->
+<div id="animalStage">
+
+    <div class="animal teddy-animal" id="teddyAnimal">
+        🧸
+        <span>❤️</span>
+    </div>
+
+    <div class="animal cat-animal" id="catAnimal">
+        🐱
+        <span>💕</span>
+    </div>
+
+    <div class="animal husky-animal" id="huskyAnimal">
+        🐶
+        <span>💙</span>
+    </div>
+
+</div>

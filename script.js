@@ -120,3 +120,177 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 });
+
+/* ==========================================
+   CUTE ANIMAL SOUNDS
+========================================== */
+
+let audioContext;
+
+function getAudio() {
+
+    if (!audioContext) {
+
+        const AudioContext =
+            window.AudioContext ||
+            window.webkitAudioContext;
+
+        if (!AudioContext) return null;
+
+        audioContext = new AudioContext();
+    }
+
+    if (audioContext.state === "suspended") {
+        audioContext.resume();
+    }
+
+    return audioContext;
+}
+
+
+/* 🐱 Cute cat meow */
+
+function catMeow() {
+
+    const ctx = getAudio();
+
+    if (!ctx) return;
+
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+
+    osc.type = "triangle";
+
+    osc.frequency.setValueAtTime(
+        700,
+        ctx.currentTime
+    );
+
+    osc.frequency.exponentialRampToValueAtTime(
+        950,
+        ctx.currentTime + .18
+    );
+
+    osc.frequency.exponentialRampToValueAtTime(
+        500,
+        ctx.currentTime + .45
+    );
+
+    gain.gain.setValueAtTime(
+        .001,
+        ctx.currentTime
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        .25,
+        ctx.currentTime + .05
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        .001,
+        ctx.currentTime + .5
+    );
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    osc.start();
+    osc.stop(ctx.currentTime + .55);
+}
+
+
+/* 🐶 Cute husky bark/howl */
+
+function huskySound() {
+
+    const ctx = getAudio();
+
+    if (!ctx) return;
+
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+
+    osc.type = "sawtooth";
+
+    osc.frequency.setValueAtTime(
+        260,
+        ctx.currentTime
+    );
+
+    osc.frequency.exponentialRampToValueAtTime(
+        150,
+        ctx.currentTime + .25
+    );
+
+    osc.frequency.exponentialRampToValueAtTime(
+        320,
+        ctx.currentTime + .5
+    );
+
+    gain.gain.setValueAtTime(
+        .001,
+        ctx.currentTime
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        .22,
+        ctx.currentTime + .03
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        .001,
+        ctx.currentTime + .55
+    );
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    osc.start();
+    osc.stop(ctx.currentTime + .6);
+}
+
+
+/* 🧸 Teddy cute pop sound */
+
+function teddySound() {
+
+    const ctx = getAudio();
+
+    if (!ctx) return;
+
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+
+    osc.type = "sine";
+
+    osc.frequency.setValueAtTime(
+        300,
+        ctx.currentTime
+    );
+
+    osc.frequency.exponentialRampToValueAtTime(
+        650,
+        ctx.currentTime + .2
+    );
+
+    gain.gain.setValueAtTime(
+        .001,
+        ctx.currentTime
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        .25,
+        ctx.currentTime + .03
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        .001,
+        ctx.currentTime + .3
+    );
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    osc.start();
+    osc.stop(ctx.currentTime + .35);
+}

@@ -573,3 +573,143 @@ footer {
     touch-action: none;
     user-select: none;
 }
+
+/* ==========================================
+   TEDDY + CAT + HUSKY PLAYGROUND
+========================================== */
+
+#animalStage {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 5000;
+}
+
+.animal {
+    position: absolute;
+    font-size: 75px;
+    filter: drop-shadow(0 10px 8px rgba(0,0,0,.15));
+    transition: left 1s ease, top 1s ease;
+}
+
+.animal span {
+    position: absolute;
+    font-size: 25px;
+    top: -5px;
+    right: -5px;
+    animation: animalHeart 1.2s infinite;
+}
+
+.teddy-animal {
+    left: -100px;
+    bottom: 8%;
+    animation: teddyRun 8s linear infinite;
+}
+
+.cat-animal {
+    right: -100px;
+    top: 18%;
+    animation: catRun 9s linear infinite;
+}
+
+.husky-animal {
+    left: 20%;
+    bottom: -100px;
+    animation: huskyBounce 2s ease-in-out infinite;
+}
+
+@keyframes teddyRun {
+
+    0% {
+        left: -100px;
+        transform: rotate(-8deg);
+    }
+
+    45% {
+        left: 45%;
+        transform: rotate(8deg);
+    }
+
+    50% {
+        transform: rotate(-8deg) scale(1.1);
+    }
+
+    100% {
+        left: 110%;
+        transform: rotate(8deg);
+    }
+}
+
+@keyframes catRun {
+
+    0% {
+        right: -100px;
+        transform: scaleX(-1);
+    }
+
+    45% {
+        right: 45%;
+        transform: scaleX(-1) rotate(-5deg);
+    }
+
+    50% {
+        transform: scaleX(-1) rotate(5deg) scale(1.1);
+    }
+
+    100% {
+        right: 110%;
+        transform: scaleX(-1);
+    }
+}
+
+@keyframes huskyBounce {
+
+    0%, 100% {
+        transform: translateY(0) rotate(-3deg);
+    }
+
+    50% {
+        transform: translateY(-30px) rotate(3deg);
+    }
+}
+
+@keyframes animalHeart {
+
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.4);
+    }
+}
+
+/* YES celebration */
+
+.animal-celebrate {
+    animation:
+        animalDance .5s ease-in-out infinite alternate !important;
+}
+
+@keyframes animalDance {
+
+    from {
+        transform: translateY(0) rotate(-10deg) scale(1);
+    }
+
+    to {
+        transform: translateY(-35px) rotate(10deg) scale(1.15);
+    }
+}
+
+@media(max-width:600px) {
+
+    .animal {
+        font-size: 55px;
+    }
+
+    .animal span {
+        font-size: 18px;
+    }
+}
