@@ -47,20 +47,12 @@ function moveNoButton(event) {
     noBtn.style.zIndex = "9999";
 }
 
-/* Computer */
-noBtn.addEventListener("mouseenter", moveNoButton);
+/* Works on laptop and phone */
+noBtn.addEventListener("pointerenter", moveNoButton);
 
-/* Phone */
-noBtn.addEventListener("touchstart", moveNoButton, {
-    passive: false
-});
-
-/* Computer */
-noBtn.addEventListener("mouseenter", moveNoButton);
-
-/* Phone */
-noBtn.addEventListener("touchstart", moveNoButton, {
-    passive: false
+noBtn.addEventListener("pointerdown", function(event) {
+    event.preventDefault();
+    moveNoButton(event);
 });
 
 function sayYes() {

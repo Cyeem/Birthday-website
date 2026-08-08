@@ -568,3 +568,8 @@ footer {
 #surpriseContent.hidden {
     display: none !important;
 }
+
+#noBtn {
+    touch-action: none;
+    user-select: none;
+}
