@@ -562,3 +562,9 @@ footer {
     }
 
 }
+
+/* HIDE THE SURPRISE UNTIL BUTTON IS CLICKED */
+
+#surpriseContent.hidden {
+    display: none !important;
+}

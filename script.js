@@ -6,36 +6,61 @@ function openSurprise() {
 
 const noBtn = document.getElementById("noBtn");
 
-const noBtn = document.getElementById("noBtn");
+let noAttempts = 0;
 
-function moveNoButton() {
+const noMessages = [
+    "NO 😭",
+    "Are you sure? 😂",
+    "Try again 😭",
+    "Nice try 😂",
+    "You can't escape ❤️",
+    "Just say YES! 💍",
+    "Emily pleaseee 🥹❤️",
+    "Think again 😂",
+    "YES is right there 👉❤️"
+];
 
-    const maxX = window.innerWidth - noBtn.offsetWidth - 20;
-    const maxY = window.innerHeight - noBtn.offsetHeight - 20;
+function moveNoButton(event) {
+    if (event) {
+        event.preventDefault();
+    }
 
-    const randomX = Math.max(10, Math.random() * maxX);
-    const randomY = Math.max(10, Math.random() * maxY);
+    noAttempts++;
+
+    noBtn.textContent =
+        noMessages[Math.min(noAttempts, noMessages.length - 1)];
+
+    const padding = 20;
+
+    const maxX = window.innerWidth - noBtn.offsetWidth - padding;
+    const maxY = window.innerHeight - noBtn.offsetHeight - padding;
+
+    const randomX =
+        padding + Math.random() * Math.max(0, maxX - padding);
+
+    const randomY =
+        padding + Math.random() * Math.max(0, maxY - padding);
 
     noBtn.style.position = "fixed";
     noBtn.style.left = randomX + "px";
     noBtn.style.top = randomY + "px";
+    noBtn.style.zIndex = "9999";
 }
 
 /* Computer */
-noBtn.addEventListener("mouseover", moveNoButton);
+noBtn.addEventListener("mouseenter", moveNoButton);
 
 /* Phone */
-noBtn.addEventListener("touchstart", function(event) {
-    event.preventDefault();
-    moveNoButton();
+noBtn.addEventListener("touchstart", moveNoButton, {
+    passive: false
 });
+
 /* Computer */
-noBtn.addEventListener("mouseover", moveNoButton);
+noBtn.addEventListener("mouseenter", moveNoButton);
 
 /* Phone */
-noBtn.addEventListener("touchstart", function(event) {
-    event.preventDefault();
-    moveNoButton();
+noBtn.addEventListener("touchstart", moveNoButton, {
+    passive: false
 });
 
 function sayYes() {
@@ -80,3 +105,26 @@ function createHearts() {
         }, 3200);
     }
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const openButton = document.getElementById("openSurprise");
+    const surprise = document.getElementById("surpriseContent");
+
+    if (openButton && surprise) {
+
+        openButton.addEventListener("click", function () {
+
+            surprise.classList.remove("hidden");
+
+            openButton.style.display = "none";
+
+            surprise.scrollIntoView({
+                behavior: "smooth"
+            });
+
+        });
+
+    }
+
+});
